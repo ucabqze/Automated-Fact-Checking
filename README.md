@@ -2,16 +2,30 @@
 this project is to develop information retrieval and data mining methods to assess the veracity of a claim. Specifically, the automated fact checking project consists of three steps: relevant document retrieval, evidence sentence selection, and claim veracity prediction.
 
 
+Code files
+==========
+'Q1/code/q1.ipynb': this is the code for subtask 1: Count frequencies of every term in the collection of documents; plot the curve of term frequencies and verify Zip’s Law.
 
-Important Information
-================
-In this section, point out any important information that is valuable for the evaluator to know before evaluating this submission
+'Q1/code/convert_data.ipynb': this is convent wikepages jsonl file to txt
 
-Provided supplementary files
-===================
-In this section, define the filename of different files that are included in this submission followed by a description of the information in the file.
+'Q2/code/q2.ipynb': this is the code for subtask 2: Vector Space Document retrieval. Extract TF-IDF representations of the 10 claims and all the documents respectively based on the document collection. The goal of this representation to later compute the cosine similarity between the document and the claims. Hence, for computational efficiency, this task represent the documents only based on the words that would have an effect on the cosine similarity computation
+
+'Q2/code/q2toq4_invertedIndex.ipynb': this code produces inverted index dictionary for q2-q4
+
+'Q3/code/q3.ipynb': this is the code for subtask 3: Probabilistic Document Retrieval. Establish a query-likelihood unigram language model based on the document collection, and return the five most similar documents for each one of the 10 claims.(appllied Laplace Smoothing, Jelinek-Mercer Smoothing and Dirichlet Smoothing to the query-likelihood language model,)
+
+'Q4/code/q4&5.ipynb': this is the code for subtask 4 and subtask 5
+subtask 4:Sentence Relevance. For a claim in the training subset and the retrieved five documents for this claim. (used the first 10 verifiable claims in the development dataset, i.e., claim ID [137334, 111897, 89891, 181634, 219028, 108281, 204361, 54168, 105095, 18708], to evaluate the performance of the logistic regression model.)
+#Instead of using Python sklearn or other packages, the implementations of the logistic regression algorithm is my own.#
+
+'Q5/code/q4&5.ipynb': this is the code for subtask 4 and subtask 5
+subtask5: Relevance Evaluation. Implement methods to compute recall, precision and F1 metrics
+
+'Q6/code/q6.ipynb': this is the code for subtask 6: Truthfulness of Claims. Used the relevant sentences specified in the ’evidence’ field as training data and using their cor- responding truthfulness labels in the train.jsonl file, build a neural network based model to assess the truthfulness of a claim in the training subset. 
 
 
+files
+======
 The answer for Q2 and Q3:
 Q2/files/Q2_vector_space.csv
 Q3/files/Q3_dirichlet.csv
@@ -19,12 +33,12 @@ Q3/files/Q3_jelinek_mercer.csv
 Q3/files/Q3_laplace.csv
 Q3/files/Q3_unigram.csv
 
+
 Others:
 Q1/files/term_count.csv : A CSV file that records the words count.
 Q4/files/q4_docs.csv: it records the first 1000 file retrieved for negative sampling on train data in Q4
 Q4/files/q4_relavent_docs_dev.csv: it records the first 10 file retrieved for negative sampling on development data in Q4
 Q4/files/1000_sample_k1_train: it records the samples to train the logistic regression model.
-
 
 
 
@@ -37,6 +51,9 @@ There is a file named 'wiki_id_text', which records all the id and text for wiki
 
 'glove model':
 please download Wikipedia 2014 + Gigaword 5 (6B tokens, 400K vocab, uncased, 50d, 100d, 200d, & 300d vectors, 822 MB download): glove.6B.zip and Common Crawl (42B tokens, 1.9M vocab, uncased, 300d vectors, 1.75 GB download): glove.42B.300d.zip from    https://nlp.stanford.edu/projects/glove/   they will be called glove model later.
+
+'term_count.csv':
+Q1/files/term_count.csv: you can get this file by running Q1/code/q1.ipynb
 
 'inverted index data':
 Q2/files/inverted_word_dictionary.txt: it records the inverted index dictionary
@@ -52,18 +69,6 @@ Q6/files/q6_input_x_dev: the development data features
 Q6/files/q6_input_y_train: the train data labels
 Q6/files/q6_input_y_dev: the development data labels
 They are too large. Please run q6.ipynb from first to last cells.
-
-Code files
-==========
-'Q1/code/q1.ipynb': this is the code for subtask 1
-'Q1/code/convert_data.ipynb': this is convent wikepages jsonl file to txt
-'Q2/code/q2.ipynb': this is the code for subtask 1
-'Q2/code/q2toq4_invertedIndex.ipynb': this code produces inverted index dictionary for q2-q4
-'Q3/code/q3.ipynb': this is the code for subtask 1
-'Q4/code/q4&5.ipynb': this is the code for subtask 4 and subtask 5
-'Q5/code/q4&5.ipynb': this is the code for subtask 4 and subtask 5
-'Q6/code/q6.ipynb': this is the code for subtask 1
-
 
 
 Running the code
